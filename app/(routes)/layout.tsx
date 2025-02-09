@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { jetBrainMonoNF } from "@/app/utils/font";
 import "./globals.css";
 import SideNavBar from "../components/SideNavBar";
 
@@ -26,9 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jetBrainMonoNF.className} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div>
+          <SideNavBar />
+          {children}
+        </div>
       </body>
     </html>
   );
