@@ -1,46 +1,54 @@
-const data = {
-  name: "dotfiles/.config/portfolio",
+import { TreeNodeData } from ".";
+
+const data: TreeNodeData = {
+  name: "~/dotfiles/.config/portfolio",
+  link: "/",
   children: [
     {
-      name: "ftplugin",
+      name: "pongpatapee",
       children: [
         {
-          name: "lua",
+          name: "experience",
           children: [
             {
-              name: "whifty",
-              children: [
-                {
-                  name: "config",
-                  children: [
-                    { name: "autocmds.lua" },
-                    { name: "keymaps.lua" },
-                    { name: "lazy.lua" },
-                    { name: "options.lua" },
-                  ],
-                },
-                {
-                  name: "plugins",
-                  children: [
-                    { name: "autotag.lua" },
-                    { name: "codeium.lua" },
-                    { name: "lazydev.lua" },
-                    { name: "mini-ai.lua" },
-                    { name: "mini-comment.lua" },
-                    { name: "mini-pair.lua" },
-                    { name: "surround.lua" },
-                    { name: "ts-comments.lua" },
-                  ],
-                },
-              ],
+              name: "README.md",
+              link: "/experience",
+            },
+          ],
+        },
+        {
+          name: "projects",
+          children: [
+            {
+              name: "README.md",
+              link: "/projects",
+            },
+          ],
+        },
+        {
+          name: "dev_tools",
+          children: [
+            {
+              name: "README.md",
+              link: "/devtools",
+            },
+          ],
+        },
+        {
+          name: "blogs",
+          children: [
+            {
+              name: "README.md",
+              link: "/blogs",
             },
           ],
         },
       ],
     },
-    { name: "init.lua" },
-    { name: "lazy-lock.json" },
-    { name: "stylua.toml" },
+    {
+      name: "README.md",
+      link: "/",
+    },
   ],
 };
 
