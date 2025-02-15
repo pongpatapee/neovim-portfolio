@@ -2,44 +2,54 @@ import { TreeNodeData } from ".";
 
 const data: TreeNodeData = {
   name: "~/dotfiles/.config/portfolio",
-  link: "/",
+  open: true,
+  path: "/",
   children: [
     {
       name: "pongpatapee",
+      open: true,
       children: [
         {
           name: "experience",
+          open: true,
           children: [
             {
               name: "README.md",
-              link: "/experience",
+              open: true,
+              path: "/experience",
             },
           ],
         },
         {
           name: "projects",
+          open: true,
           children: [
             {
               name: "README.md",
-              link: "/projects",
+              open: true,
+              path: "/projects",
             },
           ],
         },
         {
           name: "dev_tools",
+          open: true,
           children: [
             {
               name: "README.md",
-              link: "/devtools",
+              open: true,
+              path: "/devtools",
             },
           ],
         },
         {
           name: "blogs",
+          open: true,
           children: [
             {
               name: "README.md",
-              link: "/blogs",
+              open: true,
+              path: "/blogs",
             },
           ],
         },
@@ -47,7 +57,8 @@ const data: TreeNodeData = {
     },
     {
       name: "README.md",
-      link: "/",
+      open: true,
+      path: "/",
     },
   ],
 };

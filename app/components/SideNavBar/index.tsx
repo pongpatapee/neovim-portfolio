@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
 import data from "@/app/components/SideNavBar/data";
+import Link from "next/link";
 
 export type TreeNodeData = {
   name: string;
-  link?: string;
+  open: boolean;
+  path?: string;
   children?: TreeNodeData[];
 };
 
@@ -13,30 +15,69 @@ type TreeNodeProps = {
   level?: number;
 };
 
-const TreeNode = ({ node, level = 0 }: TreeNodeProps) => {
-  const [isOpen, setIsOpen] = useState(true);
+type TreeNodeItemProps = {
+  node: TreeNodeData;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  hasChildren: boolean;
+  level: number;
+};
 
-  const hasChildren = node.children && node.children.length > 0;
+const TreeNodeItem = ({
+  node,
+  isOpen,
+  setIsOpen,
+  hasChildren,
+  level,
+}: TreeNodeItemProps) => {
+  return (
+    <div
+      className="flex items-center gap-1 hover:bg-gray-700/50 py-0.5 cursor-pointer"
+      style={{ paddingLeft: `${level * 16}px` }}
+      onClick={() => hasChildren && setIsOpen(!isOpen)}
+    >
+      {hasChildren ? (
+        <span className="w-4 h-4 flex items-center justify-center">
+          {isOpen ? <span>{" "}</span> : <span>{" "}</span>}
+        </span>
+      ) : (
+        <span className="w-4" />
+      )}
+
+      {!hasChildren ? <span>File</span> : null}
+
+      <span className="ml-2 text-sm text-gray-300">{node.name}</span>
+    </div>
+  );
+};
+
+const TreeNode = ({ node, level = 0 }: TreeNodeProps) => {
+  const [isOpen, setIsOpen] = useState(node.open);
+
+  const hasChildren = Boolean(node.children && node.children.length > 0);
+  const isFile = !hasChildren;
 
   return (
     <div>
-      <div
-        className="flex items-center gap-1 hover:bg-gray-700/50 py-0.5 cursor-pointer"
-        style={{ paddingLeft: `${level * 16}px` }}
-        onClick={() => hasChildren && setIsOpen(!isOpen)}
-      >
-        {hasChildren ? (
-          <span className="w-4 h-4 flex items-center justify-center">
-            {isOpen ? <span>{" "}</span> : <span>{" "}</span>}
-          </span>
-        ) : (
-          <span className="w-4" />
-        )}
-
-        {!hasChildren ? <span>File</span> : null}
-
-        <span className="ml-2 text-sm text-gray-300">{node.name}</span>
-      </div>
+      {isFile ? (
+        <Link href={node.path!}>
+          <TreeNodeItem
+            node={node}
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            hasChildren={hasChildren}
+            level={level}
+          />
+        </Link>
+      ) : (
+        <TreeNodeItem
+          node={node}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          hasChildren={hasChildren}
+          level={level}
+        />
+      )}
 
       {/* Explicit node.children check because typescript cannot infer from hasChildren */}
       {isOpen && node.children && node.children.length > 0 && (

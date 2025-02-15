@@ -1,1 +1,3 @@
-export default function DevToolsPage() {}
+export default function DevToolsPage() {
+  return <div>Dev tools</div>;
+}
