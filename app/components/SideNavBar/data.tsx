@@ -14,7 +14,7 @@ const data: TreeNodeData = {
           open: true,
           children: [
             {
-              name: "README.md",
+              name: "experience.md",
               open: true,
               path: "/experience",
             },
@@ -25,7 +25,7 @@ const data: TreeNodeData = {
           open: true,
           children: [
             {
-              name: "README.md",
+              name: "projects.md",
               open: true,
               path: "/projects",
             },
@@ -36,7 +36,7 @@ const data: TreeNodeData = {
           open: true,
           children: [
             {
-              name: "README.md",
+              name: "dev_tools.md",
               open: true,
               path: "/devtools",
             },
@@ -47,7 +47,7 @@ const data: TreeNodeData = {
           open: true,
           children: [
             {
-              name: "README.md",
+              name: "blogs.md",
               open: true,
               path: "/blogs",
             },

@@ -6,6 +6,7 @@ import Link from "next/link";
 export type TreeNodeData = {
   name: string;
   open: boolean;
+  icon?: string;
   path?: string;
   children?: TreeNodeData[];
 };
@@ -44,7 +45,7 @@ const TreeNodeItem = ({
         <span className="w-4" />
       )}
 
-      {!hasChildren ? <span>File</span> : null}
+      {!hasChildren ? <span>{node.icon ? node.icon : " "}</span> : null}
 
       <span className="ml-2 text-sm text-gray-300">{node.name}</span>
     </div>
